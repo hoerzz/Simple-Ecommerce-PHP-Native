@@ -672,16 +672,13 @@ class Users{
     }
 
     public function updateOrderByIdInfo($order_id, $data){
-      $npembeli = $data['no_pembeli'];
       $status = $data['status'];
       
 
         $sql = "UPDATE tbl_order SET
-          no_pembeli = :pembeli,
           status = :status
           WHERE order_id = :order_id";
           $stmt= $this->db->pdo->prepare($sql);
-          $stmt->bindValue(':pembeli', $npembeli);
           $stmt->bindValue(':status', $status);
           $stmt->bindValue(':order_id', $order_id);
           $result = $stmt->execute();

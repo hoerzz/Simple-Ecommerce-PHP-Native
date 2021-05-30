@@ -11,14 +11,6 @@ Session::CheckSession();
           <div class="section-body">
         <div class="card-body">
 
-        <div class="alert alert-light alert-has-icon">
-                      <div class="alert-icon"><i class="far fa-lightbulb"></i></div>
-                      <div class="alert-body">
-                        <div class="alert-title">Pemberitahuan</div>
-                        Jika Nomer Pembeli Tidak Sesuai Maka tidak bisa diberitahu
-                      </div>
-                    </div>
-
         <?php
           if (isset($_GET['id'])) {
             $userid = preg_replace('/[^a-zA-Z0-9-]/', '', (int)$_GET['id']);
@@ -36,12 +28,6 @@ Session::CheckSession();
             ?>
            <h2 class="section-title">Status Sekarang : <span style="color:blue;"><?php echo $getOrderInfo->status; ?></span> </h2> 
                 <form action="" method="POST">
-                    <div class="form-group">
-                    <label class="d-block">Update Nomor Pembeli</label>
-                         <label for="food_name">No Wa Valid :</label>
-                            <input type="number" class="form-control" value="<?php echo $getOrderInfo->no_pembeli; ?>" placeholder="Gunakan Kode Negara Cth :62xxxxx" name="no_pembeli" required>
-                            <label for="food_name">Gunakan Kode Negara Cth :62xxxxx</label>
-                    </div>
                     <div class="form-group">
                       <label class="d-block">Update Status</label>
                       <div class="form-check">
@@ -65,7 +51,6 @@ Session::CheckSession();
                       </div>
                     </div>
                     <input name="update" class="btn btn-primary" type="submit" title="UPDATE" value="UPDATE"></input>
-                    <input id="send_form" class="btn btn-success" href="javascript:void" type="submit" title="UPDATE" value="BERITAHU DI WHATSAPP"></input>
                 </form>
                 
 
