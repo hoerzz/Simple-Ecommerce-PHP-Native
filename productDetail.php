@@ -165,64 +165,64 @@ if (isset($_GET['id'])) {
 						<p><?php echo substr($getProduknfo->deskripsi,0,300); ?><a href="#description">..Selengkapnya</a></p>
 						<div class="card_area d-flex align-items-center">
 							<a class="primary-btn" href="#" data-toggle="modal" data-target=".bd-example-modal-lg">Beli Sekarang</a>
-              <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Detail Pemesanan</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <div class="container">
-                      <div class="row">
-                      <div class="col-lg-6">
-                              <img class="img-fluid" src="<?php echo $getProduknfo->fldimage; ?>" alt="">
-                        </div>
-                        <div class="col-lg-6">
-                            <h3><?php echo $getProduknfo->namaproduk; ?></h3>
-                            <h2><?php echo "Rp. ". number_format($getProduknfo->harga); ?></h2>
-                            <ul class="list">
-                              <li><a class="active" href="#"><span>Category</span> : <?php echo $getProduknfo->kategori; ?></a></li>
-                            </ul>
-                            <?php 
-                                  if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add'])) {
-                                      $order = $users->AddOrder($_POST);
-                                    }
-                                    
-                                    if (isset($order)) {
-                                      echo $order;
-                                    }
-                            ?>
-                            <form class="contact_form" method="post" id="contactForm" novalidate="novalidate">
-                            <input type="hidden" name="penjual" value="<?php $getUinfo = $users->getUserInfoById(Session::get("id")); if ($getUinfo) { echo $getUinfo->name; }?>" class="form-control">
-                            
-                            <input type="hidden" name="nproduk" value="<?php echo $getProduknfo->namaproduk; ?>" class="form-control">
+						<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+						<div class="modal-dialog modal-lg">
+							<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">Detail Pemesanan</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<div class="container">
+								<div class="row">
+								<div class="col-lg-6">
+										<img class="img-fluid" src="<?php echo $getProduknfo->fldimage; ?>" alt="">
+									</div>
+									<div class="col-lg-6">
+										<h3><?php echo $getProduknfo->namaproduk; ?></h3>
+										<h2><?php echo "Rp. ". number_format($getProduknfo->harga); ?></h2>
+										<ul class="list">
+										<li><a class="active" href="#"><span>Category</span> : <?php echo $getProduknfo->kategori; ?></a></li>
+										</ul>
+										<?php 
+											if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add'])) {
+												$order = $users->AddOrder($_POST);
+												}
+												
+												if (isset($order)) {
+												echo $order;
+												}
+										?>
+										<form class="contact_form" method="post" id="contactForm" novalidate="novalidate">
+										<input type="hidden" name="penjual" value="<?php $getUinfo = $users->getUserInfoById(Session::get("id")); if ($getUinfo) { echo $getUinfo->name; }?>" class="form-control">
+										
+										<input type="hidden" name="nproduk" value="<?php echo $getProduknfo->namaproduk; ?>" class="form-control">
 
-                            <div class="product_count">
-                              <label for="qty">Quantity:</label>
-                              <input type="text" name="jumlah" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-                              <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                              class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-                              <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-                              class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
-                            </div>
-                            <div class="form-group">
-                              <textarea class="form-control" name="alamat" id="Address" placeholder="Enter Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Address'"></textarea>
-                            </div>
-                            <input type="hidden" name="status" value="Proses" class="form-control">
-                            <div class="col-md-14 text-right">
-                              <button type="submit" name="add" value="submit" class="primary-btn btn-lg btn-block">Beli</button>
-                          </form>
-                          </div>
-                        </div>
-                      </div>
-                  </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+										<div class="product_count">
+										<label for="qty">Quantity:</label>
+										<input type="text" name="jumlah" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+										<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
+										class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
+										<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
+										class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
+										</div>
+										<div class="form-group">
+										<textarea class="form-control" name="alamat" id="Address" placeholder="Enter Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Address'"></textarea>
+										</div>
+										<input type="hidden" name="status" value="Proses" class="form-control">
+										<div class="col-md-14 text-right">
+										<button type="submit" name="add" value="submit" class="primary-btn btn-lg btn-block">Beli</button>
+									</form>
+									</div>
+									</div>
+								</div>
+							</div>
+							</div>
+							</div>
+						</div>
+						</div>
 						</div>
 					</div>
 				</div>
